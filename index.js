@@ -91,6 +91,12 @@ const questions = [
     when: ({ confirmContact }) => {
       return confirmContact;
     }
+  },
+  {
+    type: 'confirm',
+    name: 'confirmContents',
+    message: 'Include a table of contents?',
+    default: true
   }
 ];
 
