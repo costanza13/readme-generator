@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -28,14 +29,14 @@ const questions = [
     }
   },
   {
-    type: 'input',
+    type: 'editor',
     name: 'installation',
-    message: 'Installation instructions:',
+    message: 'Installation instructions (markdown ok):',
   },
   {
-    type: 'input',
+    type: 'editor',
     name: 'usage',
-    message: 'Usage instructions:',
+    message: 'Usage instructions (markdown ok):',
   },
   {
     type: 'confirm',
@@ -60,12 +61,12 @@ const questions = [
     type: 'list',
     name: 'license',
     message: 'Choose a license:',
-    choices: ['Apache', 'BSD', 'GPL', 'LGPL', 'MIT', 'MPL', 'CDDL', 'EPL', '<other>', '<none>']
+    choices: ['Apache 2.0', 'BSD 3-Clause', 'GPL v3', 'LGPL v3', 'MIT', 'MPL 2.0', 'EPL 1.0', 'Unlicense', '<other>', '<none>']
   },
   {
     type: 'input',
     name: 'otherLicense',
-    message: 'Enter a license:',
+    message: 'Enter a name/link for the license:',
     when: ({ license }) => {
       return (license === '<other>');
     }
@@ -107,7 +108,7 @@ function writeToFile(fileName, data) {}
 function init() {
   inquirer.prompt(questions)
   .then(data => {
-    console.log(data);
+    console.log(generateMarkdown(data));
   })
   .catch();
 }
