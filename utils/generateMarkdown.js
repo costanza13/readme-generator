@@ -124,9 +124,7 @@ function generateMarkdown(data) {
 
 ${data.description}
 
-
 ${ renderTableOfContents(data) }
-
 ${ data.installation ? "## Installation\n\n" + `${data.installation}\n` : '' }
 ${ data.usage ? "## Usage\n\n" + `${data.usage}\n` : '' }
 ${ renderLicenseSection(data.license, data.otherLicense) }
@@ -134,7 +132,7 @@ ${ renderLicenseSection(data.license, data.otherLicense) }
 
 ${ data.contributing ? "## Contributing" + "\n\n" + `${data.contributing}\n\n` : '' }
 ${ data.tests ? "## Tests\n\n" + `${data.tests}\n\n` : '' }
-${ data.confirmContact ? "## Questions?\n\n" + `Contact [${data.github}](https://github.com/${data.github}) at: [${data.email}](mailto://${data.email})` : '' }
+${ data.confirmContact ? "## Questions?\n\n" + `Contact ${data.name} (GitHub: [${data.github}](https://github.com/${data.github})) at: [${data.email}](mailto://${data.email})` : '' }
 `;
 }
 

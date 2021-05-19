@@ -79,6 +79,14 @@ const questions = [
   },
   {
     type: 'input',
+    name: 'name',
+    message: 'Enter your name:',
+    when: ({ confirmContact }) => {
+      return confirmContact;
+    }
+  },
+  {
+    type: 'input',
     name: 'github',
     message: 'Enter your GitHub username:',
     when: ({ confirmContact }) => {
@@ -101,17 +109,31 @@ const questions = [
   }
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, fileContent) {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./dist/' + fileName, fileContent, err => {
+      // if there's an error, reject the Promise and send the error to the Promise's `catch()` method
+      if (err) {
+        reject(err);
+        return;
+      }
 
-// TODO: Create a function to initialize app
-function init() {
-  inquirer.prompt(questions)
-  .then(data => {
-    console.log(generateMarkdown(data));
-  })
-  .catch();
+      // resolve the Promise
+      resolve({
+        ok: true,
+        message: fileName + ' file created!'
+      });
+    });
+  });  
 }
 
-// Function call to initialize app
+function init() {
+  inquirer.prompt(questions)
+  .then(generateMarkdown)
+  .then(markdown => writeToFile('README.md', markdown))
+  .catch(error => {
+    console.log(error);
+  });
+}
+
 init();
