@@ -87,6 +87,27 @@ function renderLicenseSection(license, otherLicense) {
 
 }
 
+function renderCreditsSection(data) {
+  let creditsStr = '';
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].creditLink) {
+      creditsStr += `* [${data[i].creditName}](${data[i].creditLink})`;
+    } else {
+      creditsStr += `* ${data[i].creditName}`;
+    }
+    if (data[i].creditComment) {
+      creditsStr += ` - ${data[i].creditComment}`;
+    }
+    creditsStr += "\n";
+  }
+
+  if (creditsStr) {
+    creditsStr = "## Credits\n\n" + creditsStr;
+  }
+
+  return creditsStr;
+}
+
 function renderTableOfContents(data) {
   let toc = '';
   if (data.confirmContents) {
@@ -104,6 +125,9 @@ function renderTableOfContents(data) {
     }
     if (data.tests) {
       toc += "* [Tests](#tests)\n";
+    }
+    if (data.credits) {
+      toc += "* [Credits](#credits)\n";
     }
     if (data.questions) {
       toc += "* [Questions](#questions)\n";
@@ -124,8 +148,8 @@ function generateMarkdown(data) {
 
 ${data.description}
 
-${ data.technologies ? `Built with: ${data.technologies}\n\n` : ''};
-${ data.appUrl ? `Check it out at: ${data.appUrl}\n\n` : ''};
+${ data.technologies ? `Built with: *${data.technologies}*\n\n` : ''}
+${ data.appUrl ? `Check it out at: ${data.appUrl}\n\n` : ''}
 ${ renderTableOfContents(data) }
 ${ data.installation ? "## Installation\n\n" + `${data.installation}\n` : '' }
 ${ data.usage ? "## Usage\n\n" + `${data.usage}\n` : '' }
@@ -134,6 +158,7 @@ ${ renderLicenseSection(data.license, data.otherLicense) }
 
 ${ data.contributing ? "## Contributing" + "\n\n" + `${data.contributing}\n\n` : '' }
 ${ data.tests ? "## Tests\n\n" + `${data.tests}\n\n` : '' }
+${ data.credits ? renderCreditsSection(data.credits) : '' }
 ${ data.confirmContact ? "## Questions?\n\n" + `Contact ${data.name} (GitHub: [${data.github}](https://github.com/${data.github})) at: [${data.email}](mailto://${data.email})` : '' }
 `;
 }
