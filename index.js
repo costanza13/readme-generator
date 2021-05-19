@@ -29,6 +29,16 @@ const questions = [
     }
   },
   {
+    type: 'input',
+    name: 'appUrl',
+    message: 'Web app URL:'
+  },
+  {
+    type: 'input',
+    name: 'technologies',
+    message: 'Technologies/tools used:'
+  },
+  {
     type: 'editor',
     name: 'installation',
     message: 'Installation instructions (markdown ok):',

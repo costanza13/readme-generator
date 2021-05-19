@@ -124,6 +124,8 @@ function generateMarkdown(data) {
 
 ${data.description}
 
+${ data.technologies ? `Built with: ${data.technologies}\n\n` : ''};
+${ data.appUrl ? `Check it out at: ${data.appUrl}\n\n` : ''};
 ${ renderTableOfContents(data) }
 ${ data.installation ? "## Installation\n\n" + `${data.installation}\n` : '' }
 ${ data.usage ? "## Usage\n\n" + `${data.usage}\n` : '' }
