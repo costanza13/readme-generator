@@ -79,7 +79,7 @@ function renderLicenseSection(license, otherLicense) {
       if (badge) {
         licenseStr = badge;
       }
-      licenseStr += ' This software is released under the ' + renderLicenseLink(license, '', '') + ' license.';
+      licenseStr += ' This software is made available under the ' + renderLicenseLink(license, '', '') + ' license.';
   }
   if (licenseStr) {
     return '## License' + "\n\n" + licenseStr;
