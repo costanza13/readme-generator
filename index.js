@@ -70,6 +70,7 @@ const questions = [
   {
     type: 'list',
     name: 'license',
+    loop: false,
     message: 'Choose a license:',
     choices: ['Apache 2.0', 'BSD 3-Clause', 'GPL v3', 'LGPL v3', 'MIT', 'MPL 2.0', 'EPL 1.0', 'Unlicense', '<other>', '<none>']
   },
@@ -194,6 +195,8 @@ function init() {
   .then(readmeData => {
     if (readmeData.confirmCredits) {
       return promptCredits(readmeData);
+    } else {
+      return readmeData;
     }
   })
   .then(generateMarkdown)
