@@ -29,6 +29,16 @@ const questions = [
     }
   },
   {
+    type: 'input',
+    name: 'appUrl',
+    message: 'Web app URL:'
+  },
+  {
+    type: 'input',
+    name: 'technologies',
+    message: 'Technologies/tools used:'
+  },
+  {
     type: 'editor',
     name: 'installation',
     message: 'Installation instructions (markdown ok):',
@@ -106,6 +116,43 @@ const questions = [
     name: 'confirmContents',
     message: 'Include a table of contents?',
     default: true
+  },
+  {
+    type: 'confirm',
+    name: 'confirmCredits',
+    message: 'Include a Credits section to acknowledge any contributors, libraries/packages, tutorials, etc.?',
+    default: false
+  }
+];
+
+const creditsPrompts = [
+  {
+    type: 'input',
+    name: 'creditName',
+    message: 'Credit name/title:',
+    validate: creditNameInput => {
+      if (!creditNameInput) {
+        console.log('Credit name cannot be omitted.');
+        return false;
+      }
+      return true;
+    }
+  },
+  {
+    type: 'input',
+    name: 'creditLink',
+    message: 'Provide a link to the person (e.g., GitHub page) or resource:'
+  },
+  {
+    type: 'input',
+    name: 'creditComment',
+    message: 'Comment/description:'
+  },
+  {
+    type: 'confirm',
+    name: 'addAnother',
+    message: 'Add another credit?',
+    default: false
   }
 ];
 
@@ -127,8 +174,28 @@ function writeToFile(fileName, fileContent) {
   });  
 }
 
+const promptCredits = readmeData => {
+  if (!readmeData.credits) {
+    readmeData.credits = [];
+  }
+  return inquirer.prompt(creditsPrompts)
+  .then(creditsData => {
+    readmeData.credits.push(creditsData);
+    if (creditsData.addAnother) {
+      return promptCredits(readmeData);
+    } else {
+      return readmeData;
+    }
+  });
+};
+
 function init() {
   inquirer.prompt(questions)
+  .then(readmeData => {
+    if (readmeData.confirmCredits) {
+      return promptCredits(readmeData);
+    }
+  })
   .then(generateMarkdown)
   .then(markdown => writeToFile('README.md', markdown))
   .catch(error => {
