@@ -1,43 +1,52 @@
-# Example Project
+# Should I Go?
 
 ## Description 
 
-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus illo voluptate inventore ipsa aut nesciunt? Necessitatibus, pariatur ullam. Alias consectetur voluptas doloremque qui corrupti id adipisci, fuga eos voluptates sit!
+An app to help baseball fans decide whether to buy a ticket for an upcoming game. The app fetches and displays MLB team home game schedules from the MLB Stats API and corresponding weather information from OpenWeather's One Call API.
+
+Built with: *JavaScript, HTML, CSS, MaterializeCSS, MLB Stats API, OpenWeather One Call API*
+
+
+Check it out at: https://costanza13.github.io/should-i-go/
+
 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [License](#license)
-* [Tests](#tests)
+* [Credits](#credits)
+* [Questions](#questions)
 
 ## Installation
 
-1. Install required dependencies.
-2. Clone the repository: git clone git@github.com:github-user/example-project
-3. Run `npm install` to install required packages.
+1. Clone this repository
+2. Upload to your favorite web host
 
 
 ## Usage
 
-* Run `node example` in the project's root directory.
+* Navigate to the URL of the deployed app
+* Select a team
 
 
 ## License
 
-[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/) This software is released under the [Unlicense](http://unlicense.org/) license.
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/) This software is made available under the [Unlicense](http://unlicense.org/) license.
 
 
 ## Contributing
 
-If you'd like to contribute, please follow the guidelines set out in the [Contributor Covenant](https://www.contributor-covenant.org/).
+Please follow the guidelines set out in the [Contributor Covenant](https://www.contributor-covenant.org)
 
 
-## Tests
 
-No tests yet.  Feel free to create and submit some!
+## Credits
 
+* [thisEmcee](https://github.com/thisEmcee) - contributor
+* [evancastillo](https://github.com/evancastillo) - contributor
+* [cortelas](https://github.com/cortelas) - contributor
 
 ## Questions?
 
-Contact Joe Developer (GitHub: [mr-github](https://github.com/mr-github)) at: [joe@developer.dom](mailto://joe@developer.dom)
+Contact Michael (GitHub: [costanza13](https://github.com/costanza13)) at: [costanza13@yahoo.com](mailto://costanza13@yahoo.com)
