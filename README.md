@@ -2,7 +2,7 @@
 
 ## Description 
 
-A command-line Node.js application to assist developers in the task of creating a professional README file.
+A command-line Node.js application to assist developers in the task of creating a professional README file. The app uses the Inquirer.js Node module to power the command-line interface.
 
 ## Installation
 
@@ -23,3 +23,7 @@ Run `node index` in the project's root directory and follow the prompts.
 ## License
 
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/) This software is made available under the [Unlicense](http://unlicense.org/) license.
+
+## Credits
+
+* [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) - command-line question and answer UI by [Simon Boudrias](https://github.com/SBoudrias)
