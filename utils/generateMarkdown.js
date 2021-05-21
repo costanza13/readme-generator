@@ -129,7 +129,7 @@ function renderTableOfContents(data) {
     if (data.credits) {
       toc += "* [Credits](#credits)\n";
     }
-    if (data.questions) {
+    if (data.confirmContact) {
       toc += "* [Questions](#questions)\n";
     }
     if (toc) {
